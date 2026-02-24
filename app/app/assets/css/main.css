@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@source "../../../content/**/*";
+
+/* @theme { */
+/*   --font-sans: 'Public Sans', sans-serif; */
+/* } */
+
+@theme static {
+  /* --font-sans: 'Playfair Display', system-ui, sans-serif; */
+  /* --font-sans-head: 'Stack Sans Headline', system-ui, sans-serif; */
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-project: 'Nunito', sans-serif;
+
+
+  --basic-gradient: linear-gradient(180deg, #f3edea, #f7f4f2);
+  --color-back-50:  #E9D9C8;
+  --color-back-100: #E9D9C8;
+  --color-back-200: #E9D9C8;
+  --color-back-300: #E9D9C8;
+  --color-back-400: #E9D9C8;
+  --color-back-500: #E9D9C8;
+  --color-back-600: #E9D9C8;
+  --color-back-700: #E9D9C8;
+  --color-back-800: #E9D9C8;
+  --color-back-900: #E9D9C8;
+  --color-back-950: #E9D9C8;
+
+  --color-primary:  #02f3e6;
+  --color-secondary:  #263747;
+
+}
+
+@layer base {
+  .project {
+    font-family: var(--font-project);
+    font-weight: 300;
+  }
+}
+
+
+/* главный шрифт проекта */
+:root {
+  --font-project: 'Nunito', sans-serif;
+}
+
+/* лёгкий текст */
+.text-project-light {
+  font-family: var(--font-project);
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* нормальный текст */
+.text-project-normal {
+  font-family: var(--font-project);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* полужирный */
+.text-project-semibold {
+  font-family: var(--font-project);
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* жирный */
+.text-project-bold {
+  font-family: var(--font-project);
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
