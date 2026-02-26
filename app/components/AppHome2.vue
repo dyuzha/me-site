@@ -1,5 +1,5 @@
 <template>
-  <UPageSection
+  <section
     id="home"
     class="relative h-screen bg-fixed bg-center bg-cover flex items-center justify-center text-center"
     style="background-image: url('/images/background.jpg')"
@@ -31,7 +31,7 @@
     <div class="absolute bottom-8 w-full flex justify-center">
       <img src="/images/scroll.gif" class="h-20" />
     </div>
-  </UPagesection>
+  </section>
 </template>
 
 <script setup>

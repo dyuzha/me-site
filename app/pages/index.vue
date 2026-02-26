@@ -15,6 +15,7 @@ useSeoMeta({
 
     <AppHome />
     <AppAbout />
+    <AppHome2 />
     <AppSkills />
     <Hireme />
 
