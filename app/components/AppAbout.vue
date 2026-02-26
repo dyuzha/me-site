@@ -8,6 +8,7 @@
       container: 'py-0 sm:py-0 lg:py-0 sm:gap-16',
     }"
   >
+
     <div class="container mx-auto px-6 max-w-5xl">
 
       <!-- Фото -->
