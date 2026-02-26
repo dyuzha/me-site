@@ -1,9 +1,11 @@
 <template>
   <UPageSection
     id="home"
+  >
+  <div
     class="relative h-screen bg-fixed bg-center bg-cover flex items-center justify-center text-center"
     style="background-image: url('/images/background.jpg')"
-  >
+>
     <div class="absolute inset-0 bg-black/60"></div>
 
     <div class="relative z-10 flex flex-col items-center px-4">
@@ -31,6 +33,8 @@
     <div class="absolute bottom-8 w-full flex justify-center">
       <img src="/images/scroll.gif" class="h-20" />
     </div>
+
+  </div>
   </UPagesection>
 </template>
 
