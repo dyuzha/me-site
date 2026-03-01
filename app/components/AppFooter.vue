@@ -9,21 +9,13 @@
 
     <template #left>
       <p class="text-sm text-muted">
-        Built by Dyuzhev Matvey • © {{ new Date().getFullYear() }}
+        Built by Matvey Dyuzhev • © {{ new Date().getFullYear() }}
       </p>
     </template>
 
     <template #right>
       <UButton
-        to="https://instagram.com/dyuzhev_25"
-        target="_blank"
-        icon="i-simple-icons-instagram"
-        aria-label="Instagram"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
-        to="https://telegram/"
+        to="https://t.me/dyuzha"
         target="_blank"
         icon="i-simple-icons-telegram"
         aria-label="Nuxt on X"
