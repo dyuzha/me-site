@@ -7,6 +7,12 @@ export default defineNuxtConfig({
     '@nuxt/content'
   ],
 
+  colorMode: {
+    preference: 'dark',
+    fallback: 'dark',
+    classSuffix: ''
+  },
+
 
   devtools: {
     enabled: true

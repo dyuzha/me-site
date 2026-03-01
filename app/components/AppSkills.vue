@@ -1,7 +1,7 @@
 <template>
   <section class="flex my-0 flex-col text-white">
 
-    <h2 class="text-4xl font-light text-center text-primary my-8">
+    <h2 class="text-4xl font-light text-center text-primary my-20">
       Как я работаю
     </h2>
       <div class="max-w-7xl mx-auto px-4 mb-30">
@@ -10,7 +10,6 @@
         <div class="flex flex-col md:flex-row lg:flex-row items-center lg:items-start justify-between gap-12">
 
           <div data-aos="fade-up" class="text-center px-4 lg:max-w-sm
-          bg-none backdrop-blur-md
           ">
             <img src="/images/backend.png" alt="audit" class="h-28 mx-auto mb-6" />
 
@@ -25,7 +24,6 @@
           </div>
 
           <div data-aos="fade-up" class="text-center px-4 lg:max-w-sm
-          bg-none backdrop-blur-sm
           ">
 
             <img src="/images/frontend.png" alt="it-infra" class="h-28 mx-auto mb-6" />
@@ -45,7 +43,6 @@
           </div>
 
           <div data-aos="fade-up" class="text-center px-4 lg:max-w-sm
-          bg-none backdrop-blur-md
           ">
             <img src="/images/mobileapp.png" alt="admin" class="h-28 mx-auto mb-6" />
 
