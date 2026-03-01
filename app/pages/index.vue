@@ -1,11 +1,13 @@
 <script setup lang="ts">
 
 useSeoMeta({
-  title: "Отличный выбор",
-  ogTitle: "Достойный кандидат",
-  description: "Fullstack разработчик Дюжев Матвей",
-  ogDescription: "Fullstack разработчик Дюжев Матвей",
+  title: "Дюжев Матвей — Fullstack разработчик (DevOps, IaC, CI/CD, Python, TypeScript, Backend)",
+  ogTitle: "Дюжев Матвей — Fullstack разработчик (DevOps, IaC, CI/CD, Python, TypeScript, Backend)",
+  description: "Построение микросервисной архитектуры. Настройка CI/CD пайплайнов. Разработка микросервисов на Python, TypeScript. Автоматизация бизнеспроцессов.",
+  ogDescription:"Построение микросервисной архитектуры. Настройка CI/CD пайплайнов. Разработка микросервисов на Python, TypeScript. Автоматизация бизнеспроцессов.",
+
 })
+
 
 </script>
 

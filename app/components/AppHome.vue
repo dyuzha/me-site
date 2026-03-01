@@ -40,7 +40,7 @@
     </div>
 
     <div class="absolute bottom-8 w-full flex justify-center">
-      <img src="/images/scroll.gif" class="h-20" />
+      <img src="/images/scroll.gif" class="h-20" alt="Подсказка: прокрути вниз" />
     </div>
   </section>
 </template>

@@ -7,6 +7,14 @@ export default defineNuxtConfig({
     '@nuxt/content'
   ],
 
+
+  // Оптимизация
+  vite: {
+    build: {
+      cssCodeSplit: true
+    }
+  },
+
   colorMode: {
     preference: 'dark',
     fallback: 'dark',

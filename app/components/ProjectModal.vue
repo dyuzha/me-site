@@ -54,7 +54,7 @@ const { project } = defineProps<{
         :src="project.img"
         ref="projectImage"
         format="webp"
-        quality="80"
+        quality="50"
         class="w-full"
         />
 
