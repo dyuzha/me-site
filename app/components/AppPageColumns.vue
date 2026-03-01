@@ -21,8 +21,6 @@ async function openModal(projectData: any) {
   await instance.result
 
 }
-// const openModal = () => openProjectModal(project)
-
 </script>
 
 <template>

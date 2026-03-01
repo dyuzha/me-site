@@ -33,11 +33,15 @@
 
       <!-- Фото -->
       <div class="flex justify-center mb-10">
-        <img
-          src="/images/me.jpg"
-          alt="Me"
-          class="w-48 h-48 rounded-full border border-zinc-700 object-cover"
+
+      <NuxtImg
+        src="/images/me.jpg"
+        alt="Me"
+        format="webp"
+        quality="60"
+        class="w-48 h-48 rounded-full border border-zinc-700 object-cover"
         />
+
       </div>
 
       <!-- Цитата -->

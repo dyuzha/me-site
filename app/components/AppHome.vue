@@ -11,7 +11,7 @@
       class="absolute top-0 left-0 w-full"
       :style="{
         height: '125%', // чуть больше, чем секция
-        backgroundImage: `url(${imageUrl})`,
+        backgroundImage: `url(${optimizedImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }"
@@ -54,6 +54,20 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const imageUrl = '/images/background.jpg'
 const mail = 'mailto:matvey10d@gmail.com'
+
+
+// - Gen Image
+
+// Для TS-safe импорта composable
+import { useImage } from '#imports'
+
+// Получаем $img из useImage()
+const imageComposable = useImage()
+
+// Генерируем URL, проверяем, что $img точно существует
+const optimizedImage = imageComposable?.$img
+  ? imageComposable.$img(imageUrl, { format: 'webp', quality: 20 })
+  : imageUrl // fallback на оригинальный путь
 
 
 // -- Typed --
