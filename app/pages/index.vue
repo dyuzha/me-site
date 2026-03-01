@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 useSeoMeta({
-  title: "Fullstack разработчик Дюжев Матвей",
-  ogTitle: "Fullstack разработчик Дюжев Матвей",
+  title: "Отличный выбор",
+  ogTitle: "Достойный кандидат",
   description: "Fullstack разработчик Дюжев Матвей",
   ogDescription: "Fullstack разработчик Дюжев Матвей",
 })
@@ -15,9 +15,9 @@ useSeoMeta({
 
     <AppHome />
     <AppAbout />
-    <AppHome2 />
     <AppSkills />
     <Hireme />
+
 
     <UPageSection
     id="projects"

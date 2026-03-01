@@ -1,4 +1,21 @@
 <template>
+<div >
+  <ParticleBackground
+    :particleCount="300"
+    :particleRadius="1"
+    particleColor="2,243,230"
+    :particleAlpha="0.3"
+    :lineAlpha="0.2"
+    :lineDistance="80"
+    :mouseDistance="140"
+
+    :secondParticleCount="100"
+    :secondParticleRadius="2"
+    secondParticleColor="68,161,234"
+    :secondParticleAlpha="0.3"
+    :secondLineDistance="120"
+    :secondMouseDistance="160"
+  >
   <UPageSection
     id="about"
     class="py-24 text-white"
@@ -7,9 +24,12 @@
       title: 'text-4xl font-light text-center text-primary',
       container: 'py-0 sm:py-0 lg:py-0 sm:gap-16',
     }"
+
   >
 
-    <div class="container mx-auto px-6 max-w-5xl">
+    <div class="
+      container mx-auto px-6 max-w-5xl
+      ">
 
       <!-- Фото -->
       <div class="flex justify-center mb-10">
@@ -23,7 +43,7 @@
       <!-- Цитата -->
       <div class="text-center text-2xl max-w-3xl mx-auto mb-12 font-mono">
         <q>
-          В основе стереотипного мышления лежит идея формирования абстракций.
+          В основе стереотипного мышления лежит идея формирования абстракций
         </q>
       </div>
 
@@ -54,6 +74,11 @@
 
     </div>
   </UPageSection>
+
+    </ParticleBackground>
+
+</div>
+
 </template>
 
 <script setup>
