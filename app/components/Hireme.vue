@@ -21,7 +21,7 @@
     <!-- Content -->
     <div class="relative z-10 w-full px-6 md:ml-[20%]">
       <p class="text-2xl md:text-3xl mb-6 text-white font-light">
-        Я открыт для сотрудничества в ваших проектах!
+        Открыт к проектному сотрудничеству!
       </p>
 
       <UButton
