@@ -18,6 +18,8 @@ variables:
 
 deploy_stage:
   extends: .deploy_template
+  tags:
+    - PVE
   variables:
     DEPLOY_HOST: $STAGE_HOST
     DEPLOY_USER: $STAGE_USER
@@ -26,6 +28,8 @@ deploy_stage:
 
 deploy_prod:
   extends: .deploy_template
+  tags:
+    - PVE
   variables:
     DEPLOY_HOST: $PROD_HOST
     DEPLOY_USER: $PROD_USER
