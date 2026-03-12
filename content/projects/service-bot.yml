@@ -23,7 +23,7 @@ extend:
       icon: 'i-lucide-mail'
       badges:
         - color: 'white'
-          label: 'imap'
+          label: 'IMAP'
 
     - title: 'DB'
       description: |
@@ -53,9 +53,9 @@ extend:
       icon: 'i-lucide-folder-input'
       badges:
         - color: 'white'
-          label: 'ldap'
+          label: 'LDAP'
         - color: 'white'
-          label: 'fast-api'
+          label: 'Fast-API'
 
 accordion:
   title: Проблемы которые решает бот и особенности реализации
@@ -73,7 +73,7 @@ accordion:
         Вместо ручного ввода *telegram-id* каждого пользователя администратором реализована полноценная *авторизация* по корпоративной почте.
 
 
-    - label: Использование вне корпоративной сети.
+    - label: Использование вне корпоративной сети
       icon: i-lucide-globe
       content: |
         *Telegram*, в отличии от **Service desk** доступен вне корпоративной сети, что позволяет создавать заявки из **любой точки мира**.
