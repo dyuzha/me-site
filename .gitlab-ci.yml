@@ -1,35 +1,49 @@
-stages:
-  - deploy
-
 variables:
   APP_DIR: /opt/docker/me-site
+  IMAGE_TAG_SHA: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+
+stages:
+  - build
+  - deploy
+
 
 .deploy_template:
   stage: deploy
-  # before_script:
-  #   - eval $(ssh-agent -s)
-  #   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   script:
-    - ssh $DEPLOY_USER@$DEPLOY_HOST "
-      cd $APP_DIR &&
-      git pull &&
-      docker compose up -d
+    - ssh -o StrictHostKeyChecking=no  $DEPLOY_USER@$DEPLOY_HOST "
+      docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY &&
+      IMAGE_TAG_SHA=$IMAGE_TAG_SHA docker compose -f $APP_DIR pull &&
+      IMAGE_TAG_SHA=$IMAGE_TAG_SHA docker compose -f $APP_DIR up -d &&
+      docker image prune -f
      "
+
+build_job:
+  stage: build
+  # image: docker:latest
+  # services: [docker:dind]
+  script:
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE_TAG_SHA .
+    - docker push $IMAGE_TAG_SHA
+
 
 deploy_stage:
   extends: .deploy_template
-  tags:
-    - PVE
+  environment:
+    name: stage
+    url: https://stage.dyuzha.ru
   variables:
     DEPLOY_HOST: $STAGE_HOST
     DEPLOY_USER: $STAGE_USER
   rules:
     - if: '$CI_COMMIT_BRANCH == "stage"'
 
+
 deploy_prod:
   extends: .deploy_template
-  tags:
-    - PVE
+  environment:
+    name: prod
+    url: https://dyuzha.ru
   variables:
     DEPLOY_HOST: $PROD_HOST
     DEPLOY_USER: $PROD_USER
