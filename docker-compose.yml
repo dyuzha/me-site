@@ -1,6 +1,6 @@
 services:
   app:
-    image: devport:${TAG_SHA:-latest}
+    image: ${IMAGE_NAME:-devport}:${IMAGE_TAG:-latest}
     container_name: nuxt-site
     restart: unless-stopped
     environment:
