@@ -2,7 +2,7 @@ variables:
   APP_DIR: /opt/docker/me-site
   IMAGE_TAG_SHA: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
   IMAGE_TAG_LATEST: $CI_REGISTRY_IMAGE:latest
-  IMAGE_TAG_COMMIT: $CI_REGISTRY_IMAGE:CI_COMMIT_TAG
+  IMAGE_TAG_COMMIT: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
 
 
 stages:
@@ -16,39 +16,47 @@ stages:
     - ssh -o StrictHostKeyChecking=no  $DEPLOY_USER@$DEPLOY_HOST "
       docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY &&
       cd $APP_DIR &&
-      IMAGE_NAME=$CI_REGISTRY_IMAGE IMAGE_TAG=$CI_COMMIT_SHORT_SHA docker compose pull &&
-      IMAGE_NAME=$CI_REGISTRY_IMAGE IMAGE_TAG=$CI_COMMIT_SHORT_SHA docker compose up -d &&
+      IMAGE_NAME=$CI_REGISTRY_IMAGE IMAGE_TAG=$DEPLOY_IMAGE_TAG docker compose pull &&
+      IMAGE_NAME=$CI_REGISTRY_IMAGE IMAGE_TAG=$DEPLOY_IMAGE_TAG docker compose up -d &&
       docker image prune -f
      "
 
-build_job:
+.build_logic:
   stage: build
-
-  # image: docker:latest
-  # services: [docker:dind]
-
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - |
+      if docker pull $IMAGE_TAG_SHA; then
+        echo "Image already exists in registry. Skipping build and re-tagging..."
+      else
+        echo "Image not found. Building from scratch..."
+        docker build -t $IMAGE_TAG_SHA .
+        docker push $IMAGE_TAG_SHA
+      fi
 
 
+build_job:
+  extends: .build_logic
   script:
-    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA .
-    - docker push $IMAGE_TAG_SHA
 
-    # Push для :git_тег (ЕСЛИ ЕСТЬ GIT ТЕГ)
+    # Если это тег - вешаем тег версии
     - |
       if [ -n "$CI_COMMIT_TAG" ]; then
         docker tag $IMAGE_TAG_SHA $IMAGE_TAG_COMMIT
         docker push $IMAGE_TAG_COMMIT
       fi
 
-    # Push :latest (ТОЛЬКО ОСНОВНАЯ ВЕТКА)
+    # Если это main — вешаем тег latest
     - |
-      if [ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]; then
+      if [ "$CI_COMMIT_BRANCH" == "main" ]; then
         docker tag $IMAGE_TAG_SHA $IMAGE_TAG_LATEST
         docker push $IMAGE_TAG_LATEST
       fi
 
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == "stage"
+    - if: $CI_COMMIT_BRANCH == "main"
 
 
 deploy_stage:
@@ -59,6 +67,7 @@ deploy_stage:
   variables:
     DEPLOY_HOST: $STAGE_HOST
     DEPLOY_USER: $STAGE_USER
+    DEPLOY_IMAGE_TAG: $CI_COMMIT_SHORT_SHA
   rules:
     - if: '$CI_COMMIT_BRANCH == "stage"'
 
@@ -71,5 +80,6 @@ deploy_prod:
   variables:
     DEPLOY_HOST: $PROD_HOST
     DEPLOY_USER: $PROD_USER
+    DEPLOY_IMAGE_TAG: $CI_COMMIT_TAG
   rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: $CI_COMMIT_TAG
